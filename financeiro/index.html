@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Painel Financeiro — Samurai Ads</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+<style>
+  :root{
+    --verde-escuro:#063C35;
+    --verde-shogun:#9BCB32;
+    --verde-medio:#0a5a4e;
+    --cinza:#8B8E92;
+    --cinza-claro:#f4f5f4;
+    --cinza-texto:#3a3a3a;
+    --branco:#ffffff;
+    --border:#e1e4e1;
+    --danger:#c0392b;
+    --danger-bg:#fdecea;
+    --ok:#1e7e34;
+    --ok-bg:#e9f7ec;
+    --warn-bg:#fff8e6;
+    --warn:#8a6d1a;
+    --radius:10px;
+    --shadow:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--cinza-claro);
+    color:var(--cinza-texto);
+    -webkit-font-smoothing:antialiased;
+  }
+  header.app-header{
+    background:var(--verde-escuro);
+    color:var(--branco);
+    padding:14px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  header.app-header .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  header.app-header .brand h1{
+    font-size:18px;
+    margin:0;
+    font-weight:700;
+    letter-spacing:.2px;
+  }
+  header.app-header .brand span{
+    font-size:12px;
+    color:var(--verde-shogun);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+  }
+  header.app-header .header-actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  header.app-header .header-actions button{
+    background:rgba(255,255,255,.08);
+    color:var(--branco);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:8px;
+    padding:7px 12px;
+    font-size:12.5px;
+    cursor:pointer;
+  }
+  header.app-header .header-actions button:hover{background:rgba(255,255,255,.18);}
+
+  nav.tabs{
+    background:var(--branco);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    overflow-x:auto;
+    padding:0 12px;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav.tabs button{
+    background:none;
+    border:none;
+    border-bottom:3px solid transparent;
+    padding:13px 14px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--cinza);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  nav.tabs button.active{
+    color:var(--verde-escuro);
+    border-bottom-color:var(--verde-shogun);
+  }
+  nav.tabs button:hover{color:var(--verde-medio);}
+
+  main{
+    max-width:1180px;
+    margin:0 auto;
+    padding:20px 20px 60px;
+  }
+
+  .panel{
+    background:var(--branco);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px;
+    margin-bottom:18px;
+  }
+  .panel h2{
+    margin:0 0 4px;
+    font-size:16px;
+    color:var(--verde-escuro);
+  }
+  .panel .sub{
+    font-size:12.5px;
+    color:var(--cinza);
+    margin-bottom:14px;
+  }
+
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .month-nav{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cinza-claro);
+    border-radius:8px;
+    padding:6px 8px;
+  }
+  .month-nav button{
+    background:var(--branco);
+    border:1px solid var(--border);
+    border-radius:6px;
+    width:28px;
+    height:28px;
+    cursor:pointer;
+    font-size:14px;
+    line-height:1;
+  }
+  .month-nav button:hover{background:var(--verde-shogun);border-color:var(--verde-shogun);}
+  .month-nav input[type=month],.month-nav input[type=number],.month-nav select{
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:5px 8px;
+    font-size:13px;
+    background:var(--branco);
+  }
+  .month-nav .label{
+    font-weight:700;
+    color:var(--verde-escuro);
+    font-size:13.5px;
+    min-width:130px;
+    text-align:center;
+    text-transform:capitalize;
+  }
+
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .kpi{
+    background:var(--cinza-claro);
+    border-radius:var(--radius);
+    padding:14px;
+    border:1px solid var(--border);
+  }
+  .kpi .kpi-label{
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    color:var(--cinza);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .kpi .kpi-value{
+    font-size:20px;
+    font-weight:700;
+    color:var(--verde-escuro);
+  }
+  .kpi.accent{background:var(--verde-escuro);border-color:var(--verde-escuro);}
+  .kpi.accent .kpi-label{color:var(--verde-shogun);}
+  .kpi.accent .kpi-value{color:var(--branco);}
+  .kpi .kpi-value.neg{color:var(--danger);}
+  .kpi input[type=number]{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:6px 8px;
+    font-size:15px;
+    font-weight:700;
+    color:var(--verde-escuro);
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  th,td{
+    padding:8px 9px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+    white-space:nowrap;
+  }
+  th{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+    color:var(--cinza);
+    font-weight:700;
+    background:var(--cinza-claro);
+  }
+  tr.group-row td{
+    background:#eef4ea;
+    font-weight:700;
+    color:var(--verde-escuro);
+  }
+  tr.total-row td{
+    background:var(--verde-escuro);
+    color:var(--branco);
+    font-weight:700;
+  }
+  tr:hover td{background:#fafbf8;}
+  tr.group-row:hover td{background:#eef4ea;}
+  tr.total-row:hover td{background:var(--verde-escuro);}
+
+  td input[type=text],td input[type=number],td select{
+    width:100%;
+    min-width:70px;
+    border:1px solid transparent;
+    background:transparent;
+    padding:5px 6px;
+    border-radius:5px;
+    font-size:13px;
+    font-family:inherit;
+    color:var(--cinza-texto);
+  }
+  td input[type=text]{min-width:120px;}
+  td input:hover,td select:hover{border-color:var(--border);}
+  td input:focus,td select:focus{border-color:var(--verde-shogun);outline:none;background:var(--branco);}
+  td.computed{color:var(--cinza);font-variant-numeric:tabular-nums;}
+  td.money{font-variant-numeric:tabular-nums;}
+  .table-scroll{overflow-x:auto;}
+
+  .badge{
+    display:inline-block;
+    padding:3px 9px;
+    border-radius:99px;
+    font-size:11px;
+    font-weight:700;
+  }
+  .badge.ok{background:var(--ok-bg);color:var(--ok);}
+  .badge.pending{background:var(--warn-bg);color:var(--warn);}
+
+  button.icon-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    color:var(--cinza);
+    font-size:16px;
+    padding:2px 6px;
+    border-radius:5px;
+  }
+  button.icon-btn:hover{background:var(--danger-bg);color:var(--danger);}
+
+  button.add-row{
+    margin-top:10px;
+    background:var(--verde-escuro);
+    color:var(--branco);
+    border:none;
+    border-radius:7px;
+    padding:8px 14px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  button.add-row:hover{background:var(--verde-medio);}
+  button.ghost-btn{
+    background:none;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:7px 12px;
+    font-size:12.5px;
+    cursor:pointer;
+    color:var(--cinza-texto);
+  }
+  button.ghost-btn:hover{border-color:var(--verde-shogun);color:var(--verde-escuro);}
+
+  .two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;}
+  @media (max-width:860px){.two-col{grid-template-columns:1fr;}}
+
+  .bars{display:flex;flex-direction:column;gap:10px;}
+  .bar-row{display:flex;align-items:center;gap:10px;font-size:12.5px;}
+  .bar-row .bar-label{width:150px;flex-shrink:0;color:var(--cinza-texto);}
+  .bar-row .bar-track{flex:1;background:var(--cinza-claro);border-radius:6px;height:16px;overflow:hidden;}
+  .bar-row .bar-fill{height:100%;background:var(--verde-shogun);border-radius:6px;}
+  .bar-row .bar-value{width:90px;text-align:right;flex-shrink:0;font-weight:600;color:var(--verde-escuro);}
+
+  .chart{display:flex;align-items:flex-end;gap:6px;height:180px;padding-top:10px;overflow-x:auto;}
+  .chart .month-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:44px;gap:3px;flex:1;}
+  .chart .bar-pair{display:flex;align-items:flex-end;gap:2px;height:100%;width:100%;justify-content:center;}
+  .chart .mini-bar{width:9px;border-radius:3px 3px 0 0;min-height:2px;}
+  .chart .mini-bar.bruto{background:#c8dfc0;}
+  .chart .mini-bar.lucro{background:var(--verde-shogun);}
+  .chart .month-tag{font-size:10px;color:var(--cinza);margin-top:4px;text-transform:capitalize;}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--cinza);margin-top:6px;}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .legend i{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  .status-list{display:flex;flex-direction:column;gap:8px;}
+  .status-item{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);}
+  .status-item:last-child{border-bottom:none;}
+
+  .note{font-size:12px;color:var(--cinza);margin-top:8px;}
+  .empty-hint{font-size:13px;color:var(--cinza);padding:20px;text-align:center;}
+
+  footer.app-footer{
+    text-align:center;
+    padding:20px;
+    color:var(--cinza);
+    font-size:11.5px;
+  }
+  input[type=file]{display:none;}
+  .field-inline{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--cinza-texto);}
+  .field-inline input[type=number]{width:90px;border:1px solid var(--border);border-radius:6px;padding:6px 8px;}
+  .subtabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+  .subtabs button{
+    background:var(--cinza-claro);
+    border:1px solid var(--border);
+    border-radius:99px;
+    padding:6px 13px;
+    font-size:12.5px;
+    cursor:pointer;
+    color:var(--cinza-texto);
+  }
+  .subtabs button.active{background:var(--verde-escuro);color:var(--branco);border-color:var(--verde-escuro);}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="brand">
+    <h1>Painel Financeiro</h1>
+    <span>Samurai Ads</span>
+  </div>
+  <div class="header-actions">
+    <button data-action="export-data">Exportar dados</button>
+    <button data-action="import-data">Importar dados</button>
+    <button data-action="reset-data">Restaurar exemplo</button>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs"></nav>
+
+<main id="app"></main>
+
+<footer class="app-footer">Dados salvos localmente no seu navegador (localStorage). Use "Exportar dados" para fazer backup.</footer>
+
+<input type="file" id="import-input" accept="application/json" />
+
+<script>
+(function(){
+"use strict";
+
+var STORAGE_KEY = "samurai_financeiro_v1";
+var MESES = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+var MESES_ABREV = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+var CATEGORIAS_FIXAS = ["Prestadores de serviço","Equipe","Ferramentas","Marketing","Retiradas","Outros"];
+var TABS = [
+  {id:"dashboard", label:"Dashboard"},
+  {id:"faturamento", label:"Faturamento"},
+  {id:"fixos", label:"Custos Fixos"},
+  {id:"variaveis", label:"Custos Variáveis"},
+  {id:"anual", label:"Resultado Anual"},
+  {id:"planejamento", label:"Planejamento Anual"},
+  {id:"simulador", label:"Simulador"}
+];
+
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function sum(arr, fn){ return arr.reduce(function(a,b){ return a + (fn(b)||0); }, 0); }
+function round2(n){ return Math.round((n + Number.EPSILON) * 100) / 100; }
+function fmtMoney(n){
+  n = n || 0;
+  return n.toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+}
+function fmtPct(n){
+  n = n || 0;
+  return (n*100).toLocaleString("pt-BR", {minimumFractionDigits:1, maximumFractionDigits:1}) + "%";
+}
+function monthLabel(key){
+  var parts = key.split("-");
+  var y = parts[0], m = parseInt(parts[1],10);
+  return MESES[m-1] + " / " + y;
+}
+function shiftMonth(key, delta){
+  var parts = key.split("-");
+  var y = parseInt(parts[0],10), m = parseInt(parts[1],10);
+  m += delta;
+  while(m > 12){ m -= 12; y += 1; }
+  while(m < 1){ m += 12; y -= 1; }
+  return y + "-" + (m<10?"0"+m:""+m);
+}
+function monthKey(y,m){ return y + "-" + (m<10?"0"+m:""+m); }
+
+function defaultState(){
+  return {
+    settings: { impostoPadrao: 0.09 },
+    ui: { tab:"dashboard", month:"2025-11", resultYear:2025, planYear:2026, planMonth:1 },
+    months: {
+      "2025-11": {
+        saldoMesAnterior: 4000,
+        churnRate: null,
+        fixedCosts: [
+          {id:uid(), categoria:"Prestadores de serviço", descricao:"Contabilidade", dia:5, valor:560, pago:true},
+          {id:uid(), categoria:"Prestadores de serviço", descricao:"Advogado", dia:10, valor:1800, pago:true},
+          {id:uid(), categoria:"Equipe", descricao:"Gestor de Tráfego", dia:10, valor:10000, pago:false},
+          {id:uid(), categoria:"Ferramentas", descricao:"Assinatura digital", dia:10, valor:50, pago:false},
+          {id:uid(), categoria:"Ferramentas", descricao:"Relatórios", dia:15, valor:250, pago:false},
+          {id:uid(), categoria:"Ferramentas", descricao:"CapCut PRO", dia:10, valor:32.9, pago:false},
+          {id:uid(), categoria:"Ferramentas", descricao:"Plano de Celular", dia:10, valor:45, pago:false},
+          {id:uid(), categoria:"Marketing", descricao:"Investimento em Ads", dia:10, valor:600, pago:false},
+          {id:uid(), categoria:"Retiradas", descricao:"Pró-labore", dia:10, valor:14000, pago:false},
+          {id:uid(), categoria:"Retiradas", descricao:"INSS", dia:10, valor:155.32, pago:false},
+          {id:uid(), categoria:"Retiradas", descricao:"Divisão de lucro mensal", dia:10, valor:0, pago:false}
+        ],
+        variableCosts: [
+          {id:uid(), descricao:"Estúdio Ao Vivo", dia:5, valor:600, pago:false},
+          {id:uid(), descricao:"Cartão Empresa", dia:10, valor:190, pago:false},
+          {id:uid(), descricao:"Fotos profissionais", dia:20, valor:500, pago:false},
+          {id:uid(), descricao:"Lembrança Fim de Ano", dia:25, valor:500, pago:false}
+        ],
+        clients: [
+          {id:uid(), nome:"Porta da Horta", dia:5, pago:false, bruto:2000, impostoPct:0.09},
+          {id:uid(), nome:"Dr Fitness", dia:5, pago:false, bruto:1000, impostoPct:0.09},
+          {id:uid(), nome:"Point Fit", dia:5, pago:false, bruto:1000, impostoPct:0.09},
+          {id:uid(), nome:"Afetive", dia:10, pago:false, bruto:1400, impostoPct:0.09},
+          {id:uid(), nome:"Fome de Cão", dia:10, pago:false, bruto:1000, impostoPct:0.09},
+          {id:uid(), nome:"Do Parque", dia:15, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Gourmet Nenem", dia:15, pago:false, bruto:1500, impostoPct:0.09},
+          {id:uid(), nome:"Brenari", dia:15, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Nutri e Leve", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"In Fit", dia:0, pago:false, bruto:0, impostoPct:0.09},
+          {id:uid(), nome:"Welness Fit", dia:0, pago:false, bruto:1897, impostoPct:0.09},
+          {id:uid(), nome:"Qualivi", dia:0, pago:false, bruto:1897, impostoPct:0.09},
+          {id:uid(), nome:"Hibiscus", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Fit CSA", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Prime Academia", dia:0, pago:false, bruto:2000, impostoPct:0.09},
+          {id:uid(), nome:"Nutri Bene", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Bruna Marmitaria", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"MoveWell Academia", dia:0, pago:false, bruto:1000, impostoPct:0.09},
+          {id:uid(), nome:"Boa Forma", dia:0, pago:false, bruto:2000, impostoPct:0.09},
+          {id:uid(), nome:"Mood", dia:0, pago:false, bruto:1597, impostoPct:0.09},
+          {id:uid(), nome:"Fit Box", dia:0, pago:false, bruto:1897, impostoPct:0.09},
+          {id:uid(), nome:"Comidinha Fit", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Nosh", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Top Foods", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Comida na Marmita", dia:0, pago:false, bruto:1797, impostoPct:0.09},
+          {id:uid(), nome:"Refrigeração Icaraí", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Vida Leve", dia:0, pago:false, bruto:1897, impostoPct:0.09},
+          {id:uid(), nome:"Fit Food BSB", dia:0, pago:false, bruto:500, impostoPct:0.09},
+          {id:uid(), nome:"Vida Mais Fitt", dia:0, pago:false, bruto:1000, impostoPct:0.09},
+          {id:uid(), nome:"Thalifit", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Cozinha da Thi", dia:0, pago:false, bruto:1497, impostoPct:0.09},
+          {id:uid(), nome:"Tudo Pronto", dia:0, pago:false, bruto:1000, impostoPct:0.09}
+        ]
+      }
+    },
+    potencial: [
+      {id:uid(), nome:"1 Gestor de Tráfego", clientes:15, ticket:1500, custos:5562, impostoPct:0.06},
+      {id:uid(), nome:"1 Head + 2 Gestores + 1 CS", clientes:30, ticket:1500, custos:20000, impostoPct:0.06},
+      {id:uid(), nome:"1 Head + 2 Gestores + 1 CS (ticket premium)", clientes:30, ticket:2500, custos:20000, impostoPct:0.06}
+    ],
+    planejamento: {
+      "2026-01": [
+        {id:uid(), tipo:"Negócio Local", valorMin:1000, valorIdeal:2000, ticket:1500, clientes:10, headTrafego:0, gestorTrafego:1, cs:0, sdr:0, gestorProjetos:0, custoEquipe:5000, impostos:800, custos:2000, churn:0.05}
+      ],
+      "2026-02": [
+        {id:uid(), tipo:"Negócio Local", valorMin:1000, valorIdeal:2000, ticket:1500, clientes:12, headTrafego:0, gestorTrafego:2, cs:0, sdr:0, gestorProjetos:0, custoEquipe:7000, impostos:1100, custos:2000, churn:0.08},
+        {id:uid(), tipo:"Ecommerce", valorMin:1300, valorIdeal:2500, ticket:1900, clientes:2, headTrafego:0, gestorTrafego:0, cs:0, sdr:0, gestorProjetos:0, custoEquipe:0, impostos:0, custos:0, churn:0}
+      ]
+    }
+  };
+}
+
+var state = loadState();
+
+function loadState(){
+  try{
+    var raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){ console.warn("Falha ao carregar dados salvos", e); }
+  return defaultState();
+}
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }catch(e){ console.warn("Falha ao salvar dados (armazenamento indisponível)", e); }
+}
+
+function getMonth(key){
+  return state.months[key] || {saldoMesAnterior:null, churnRate:null, fixedCosts:[], variableCosts:[], clients:[]};
+}
+function ensureMonth(key){
+  if(!state.months[key]){
+    state.months[key] = {saldoMesAnterior:null, churnRate:null, fixedCosts:[], variableCosts:[], clients:[]};
+  }
+  return state.months[key];
+}
+
+function saldoAnteriorEfetivo(key, depth){
+  depth = depth || 0;
+  var m = state.months[key];
+  if(m && m.saldoMesAnterior !== null && m.saldoMesAnterior !== undefined && m.saldoMesAnterior !== "") return Number(m.saldoMesAnterior);
+  if(depth > 36) return 0;
+  var prev = shiftMonth(key, -1);
+  if(!state.months[prev]) return 0;
+  return computeMonth(prev, depth+1).saldoCaixa;
+}
+
+function computeMonth(key, depth){
+  var m = getMonth(key);
+  var fixedTotal = sum(m.fixedCosts, function(c){ return c.valor; });
+  var variableTotal = sum(m.variableCosts, function(c){ return c.valor; });
+  var custosTotais = fixedTotal + variableTotal;
+  var fatBruto = sum(m.clients, function(c){ return c.bruto; });
+  var impostoTotal = sum(m.clients, function(c){ return (c.bruto||0) * (c.impostoPct||0); });
+  var fatLiquido = fatBruto - impostoTotal;
+  var pagamentosTotais = custosTotais + impostoTotal;
+  var lucroLiquido = fatBruto - pagamentosTotais;
+  var margem = fatBruto > 0 ? lucroLiquido / fatBruto : 0;
+  var saldoAnterior = saldoAnteriorEfetivo(key, depth||0);
+  var saldoCaixa = saldoAnterior + lucroLiquido;
+  return {
+    fixedTotal:fixedTotal, variableTotal:variableTotal, custosTotais:custosTotais,
+    fatBruto:fatBruto, impostoTotal:impostoTotal, fatLiquido:fatLiquido,
+    pagamentosTotais:pagamentosTotais, lucroLiquido:lucroLiquido, margem:margem,
+    saldoAnterior:saldoAnterior, saldoCaixa:saldoCaixa
+  };
+}
+
+// ---------- rendering shell ----------
+
+var app = document.getElementById("app");
+var tabsEl = document.getElementById("tabs");
+
+function renderTabs(){
+  tabsEl.innerHTML = TABS.map(function(t){
+    return '<button data-action="switch-tab" data-tab="'+t.id+'" class="'+(state.ui.tab===t.id?"active":"")+'">'+t.label+'</button>';
+  }).join("");
+}
+
+function render(){
+  renderTabs();
+  var html = "";
+  switch(state.ui.tab){
+    case "dashboard": html = renderDashboard(); break;
+    case "faturamento": html = renderFaturamento(); break;
+    case "fixos": html = renderFixos(); break;
+    case "variaveis": html = renderVariaveis(); break;
+    case "anual": html = renderAnual(); break;
+    case "planejamento": html = renderPlanejamento(); break;
+    case "simulador": html = renderSimulador(); break;
+  }
+  app.innerHTML = html;
+}
+
+function monthNavHtml(key, prevAction, nextAction, inputAction){
+  return '<div class="month-nav">' +
+    '<button data-action="'+prevAction+'" title="Mês anterior">&#8592;</button>' +
+    '<span class="label">'+monthLabel(key)+'</span>' +
+    '<button data-action="'+nextAction+'" title="Próximo mês">&#8594;</button>' +
+    '<input type="month" data-action="'+inputAction+'" value="'+key+'" />' +
+    '</div>';
+}
+
+// ---------- Dashboard ----------
+
+function renderDashboard(){
+  var key = state.ui.month;
+  var m = getMonth(key);
+  var c = computeMonth(key);
+  var pagos = m.clients.filter(function(x){return x.pago;}).length;
+  var pendentes = m.clients.length - pagos;
+
+  var catTotals = {};
+  m.fixedCosts.forEach(function(f){ catTotals[f.categoria] = (catTotals[f.categoria]||0) + f.valor; });
+  var maxCat = Math.max.apply(null, Object.keys(catTotals).map(function(k){return catTotals[k];}).concat([1]));
+
+  var barsHtml = Object.keys(catTotals).map(function(k){
+    var v = catTotals[k];
+    var pct = c.fatBruto > 0 ? (v / c.fatBruto) : 0;
+    return '<div class="bar-row"><div class="bar-label">'+k+'</div><div class="bar-track"><div class="bar-fill" style="width:'+Math.min(100, (v/maxCat)*100)+'%"></div></div><div class="bar-value">'+fmtMoney(v)+' ('+fmtPct(pct)+')</div></div>';
+  }).join("") || '<div class="empty-hint">Sem custos fixos cadastrados neste mês.</div>';
+
+  var statusHtml = m.clients.length ? (
+    '<div class="status-item"><span>Clientes pagos</span><span class="badge ok">'+pagos+'</span></div>' +
+    '<div class="status-item"><span>Clientes pendentes</span><span class="badge pending">'+pendentes+'</span></div>' +
+    '<div class="status-item"><span>Total de clientes ativos</span><span><strong>'+m.clients.length+'</strong></span></div>'
+  ) : '<div class="empty-hint">Nenhum cliente cadastrado neste mês.</div>';
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Resumo do mês</h2><div class="sub">Visão geral de faturamento, custos e caixa</div></div>' +
+      monthNavHtml(key, "dash-prev-month", "dash-next-month", "dash-set-month") +
+    '</div>' +
+    '<div class="kpi-grid">' +
+      '<div class="kpi"><div class="kpi-label">Faturamento bruto</div><div class="kpi-value">'+fmtMoney(c.fatBruto)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Impostos</div><div class="kpi-value">'+fmtMoney(c.impostoTotal)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Faturamento líquido</div><div class="kpi-value">'+fmtMoney(c.fatLiquido)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Custos fixos</div><div class="kpi-value">'+fmtMoney(c.fixedTotal)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Custos variáveis</div><div class="kpi-value">'+fmtMoney(c.variableTotal)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Pagamentos totais</div><div class="kpi-value">'+fmtMoney(c.pagamentosTotais)+'</div></div>' +
+      '<div class="kpi accent"><div class="kpi-label">Lucro líquido</div><div class="kpi-value'+(c.lucroLiquido<0?" neg":"")+'">'+fmtMoney(c.lucroLiquido)+'</div></div>' +
+      '<div class="kpi accent"><div class="kpi-label">Margem de lucro</div><div class="kpi-value">'+fmtPct(c.margem)+'</div></div>' +
+      '<div class="kpi"><div class="kpi-label">Saldo mês anterior</div><input type="number" step="0.01" data-action="set-saldo-anterior" value="'+(m.saldoMesAnterior===null||m.saldoMesAnterior===undefined?"":m.saldoMesAnterior)+'" placeholder="'+round2(c.saldoAnterior)+' (automático)" /></div>' +
+      '<div class="kpi accent"><div class="kpi-label">Saldo em caixa atual</div><div class="kpi-value">'+fmtMoney(c.saldoCaixa)+'</div></div>' +
+    '</div>' +
+  '</div>' +
+  '<div class="two-col">' +
+    '<div class="panel">' +
+      '<h2>Custos fixos por categoria</h2>' +
+      '<div class="sub">% em relação ao faturamento bruto do mês</div>' +
+      '<div class="bars">'+barsHtml+'</div>' +
+    '</div>' +
+    '<div class="panel">' +
+      '<h2>Situação de pagamentos</h2>' +
+      '<div class="sub">Clientes do mês selecionado</div>' +
+      '<div class="status-list">'+statusHtml+'</div>' +
+      '<div class="field-inline" style="margin-top:14px;">' +
+        '<label>Churn rate do mês (%)</label>' +
+        '<input type="number" step="0.1" data-action="set-churn" value="'+(m.churnRate===null||m.churnRate===undefined?"":round2(m.churnRate*100))+'" placeholder="0.0" />' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+// ---------- Faturamento ----------
+
+function renderFaturamento(){
+  var key = state.ui.month;
+  var m = getMonth(key);
+  var c = computeMonth(key);
+
+  var rows = m.clients.map(function(cl){
+    var impVal = (cl.bruto||0) * (cl.impostoPct||0);
+    var liq = (cl.bruto||0) - impVal;
+    return '<tr data-id="'+cl.id+'">' +
+      '<td><input type="text" data-field="nome" value="'+escAttr(cl.nome)+'" /></td>' +
+      '<td><input type="number" data-field="dia" value="'+cl.dia+'" style="width:60px" /></td>' +
+      '<td style="text-align:center"><input type="checkbox" data-field="pago" '+(cl.pago?"checked":"")+' /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="bruto" value="'+cl.bruto+'" /></td>' +
+      '<td><input type="number" step="0.1" data-field="impostoPctInput" value="'+round2(cl.impostoPct*100)+'" style="width:60px" />%</td>' +
+      '<td class="computed money">'+fmtMoney(impVal)+'</td>' +
+      '<td class="computed money">'+fmtMoney(liq)+'</td>' +
+      '<td><button class="icon-btn" data-action="remove-client" title="Remover">&times;</button></td>' +
+    '</tr>';
+  }).join("");
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Faturamento por cliente</h2><div class="sub">Cadastre os clientes ativos e acompanhe pagamentos</div></div>' +
+      monthNavHtml(key, "fat-prev-month", "fat-next-month", "fat-set-month") +
+    '</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th>Cliente</th><th>Dia</th><th>Pago</th><th>Faturamento bruto</th><th>Imposto</th><th>Valor imposto</th><th>Líquido</th><th></th></tr></thead>' +
+      '<tbody>' + (rows || '<tr><td colspan="8" class="empty-hint">Nenhum cliente neste mês. Clique em "Adicionar cliente".</td></tr>') + '</tbody>' +
+      '<tfoot><tr class="total-row"><td colspan="3">TOTAL</td><td class="money">'+fmtMoney(c.fatBruto)+'</td><td></td><td class="money">'+fmtMoney(c.impostoTotal)+'</td><td class="money">'+fmtMoney(c.fatLiquido)+'</td><td></td></tr></tfoot>' +
+    '</table></div>' +
+    '<button class="add-row" data-action="add-client">+ Adicionar cliente</button>' +
+  '</div>';
+}
+
+// ---------- Custos Fixos ----------
+
+function renderFixos(){
+  var key = state.ui.month;
+  var m = getMonth(key);
+  var c = computeMonth(key);
+
+  var groups = {};
+  m.fixedCosts.forEach(function(f){
+    if(!groups[f.categoria]) groups[f.categoria] = [];
+    groups[f.categoria].push(f);
+  });
+
+  var rowsHtml = "";
+  Object.keys(groups).forEach(function(cat){
+    var items = groups[cat];
+    var subtotal = sum(items, function(x){return x.valor;});
+    var pct = c.fatBruto > 0 ? subtotal / c.fatBruto : 0;
+    rowsHtml += '<tr class="group-row"><td colspan="3">'+cat+'</td><td class="money">'+fmtMoney(subtotal)+'</td><td>'+fmtPct(pct)+'</td><td></td></tr>';
+    items.forEach(function(f){
+      rowsHtml += '<tr data-id="'+f.id+'">' +
+        '<td><select data-field="categoria">'+CATEGORIAS_FIXAS.map(function(cc){return '<option value="'+cc+'" '+(cc===f.categoria?"selected":"")+'>'+cc+'</option>';}).join("")+'</select></td>' +
+        '<td><input type="text" data-field="descricao" value="'+escAttr(f.descricao)+'" /></td>' +
+        '<td><input type="number" data-field="dia" value="'+f.dia+'" style="width:60px" /></td>' +
+        '<td class="money"><input type="number" step="0.01" data-field="valor" value="'+f.valor+'" /></td>' +
+        '<td style="text-align:center"><input type="checkbox" data-field="pago" '+(f.pago?"checked":"")+' /></td>' +
+        '<td><button class="icon-btn" data-action="remove-fixed" title="Remover">&times;</button></td>' +
+      '</tr>';
+    });
+  });
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Custos fixos</h2><div class="sub">Despesas recorrentes agrupadas por categoria</div></div>' +
+      monthNavHtml(key, "fix-prev-month", "fix-next-month", "fix-set-month") +
+    '</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th>Categoria</th><th>Descrição</th><th>Dia pgto.</th><th>Valor</th><th>Pago</th><th></th></tr></thead>' +
+      '<tbody>' + (rowsHtml || '<tr><td colspan="6" class="empty-hint">Nenhum custo fixo neste mês.</td></tr>') + '</tbody>' +
+      '<tfoot><tr class="total-row"><td colspan="3">TOTAL</td><td class="money">'+fmtMoney(c.fixedTotal)+'</td><td colspan="2">'+fmtPct(c.fatBruto>0?c.fixedTotal/c.fatBruto:0)+'</td></tr></tfoot>' +
+    '</table></div>' +
+    '<button class="add-row" data-action="add-fixed">+ Adicionar custo fixo</button>' +
+  '</div>';
+}
+
+// ---------- Custos Variáveis ----------
+
+function renderVariaveis(){
+  var key = state.ui.month;
+  var m = getMonth(key);
+  var c = computeMonth(key);
+
+  var rows = m.variableCosts.map(function(v){
+    return '<tr data-id="'+v.id+'">' +
+      '<td><input type="text" data-field="descricao" value="'+escAttr(v.descricao)+'" /></td>' +
+      '<td><input type="number" data-field="dia" value="'+v.dia+'" style="width:60px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="valor" value="'+v.valor+'" /></td>' +
+      '<td style="text-align:center"><input type="checkbox" data-field="pago" '+(v.pago?"checked":"")+' /></td>' +
+      '<td><button class="icon-btn" data-action="remove-variable" title="Remover">&times;</button></td>' +
+    '</tr>';
+  }).join("");
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Custos variáveis</h2><div class="sub">Despesas pontuais do mês</div></div>' +
+      monthNavHtml(key, "var-prev-month", "var-next-month", "var-set-month") +
+    '</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th>Descrição</th><th>Dia pgto.</th><th>Valor</th><th>Pago</th><th></th></tr></thead>' +
+      '<tbody>' + (rows || '<tr><td colspan="5" class="empty-hint">Nenhum custo variável neste mês.</td></tr>') + '</tbody>' +
+      '<tfoot><tr class="total-row"><td>TOTAL</td><td></td><td class="money">'+fmtMoney(c.variableTotal)+'</td><td colspan="2"></td></tr></tfoot>' +
+    '</table></div>' +
+    '<button class="add-row" data-action="add-variable">+ Adicionar custo variável</button>' +
+  '</div>';
+}
+
+// ---------- Resultado Anual ----------
+
+function renderAnual(){
+  var year = state.ui.resultYear;
+  var monthsData = [];
+  for(var i=1;i<=12;i++){
+    var key = monthKey(year,i);
+    var exists = !!state.months[key];
+    monthsData.push({key:key, c: exists ? computeMonth(key) : null, churn: exists ? state.months[key].churnRate : null});
+  }
+  var totalBruto = sum(monthsData, function(x){return x.c?x.c.fatBruto:0;});
+  var totalImposto = sum(monthsData, function(x){return x.c?x.c.impostoTotal:0;});
+  var totalCustos = sum(monthsData, function(x){return x.c?x.c.custosTotais:0;});
+  var totalLucro = sum(monthsData, function(x){return x.c?x.c.lucroLiquido:0;});
+  var totalMargem = totalBruto>0 ? totalLucro/totalBruto : 0;
+  var churnValues = monthsData.filter(function(x){return x.churn!==null && x.churn!==undefined;});
+  var totalChurn = churnValues.length ? sum(churnValues,function(x){return x.churn;})/churnValues.length : 0;
+
+  function row(label, getter, fmt){
+    var cells = monthsData.map(function(x){
+      var v = x.c ? getter(x) : 0;
+      return '<td class="money">'+(x.c?fmt(v):'<span style="color:var(--cinza)">—</span>')+'</td>';
+    }).join("");
+    return '<tr><td>'+label+'</td>'+cells+'<td class="money"><strong>'+fmt(getTotal(label))+'</strong></td></tr>';
+  }
+  function getTotal(label){
+    if(label==="Faturamento bruto") return totalBruto;
+    if(label==="Impostos") return totalImposto;
+    if(label==="Custos + despesas") return totalCustos;
+    if(label==="Lucro líquido") return totalLucro;
+    if(label==="Margem de lucro") return totalMargem;
+    if(label==="Churn rate") return totalChurn;
+    return 0;
+  }
+
+  var maxVal = Math.max.apply(null, monthsData.map(function(x){return x.c?x.c.fatBruto:0;}).concat([1]));
+  var chartBars = monthsData.map(function(x,i){
+    var bruto = x.c ? x.c.fatBruto : 0;
+    var lucro = x.c ? x.c.lucroLiquido : 0;
+    var hBruto = Math.max(2, (bruto/maxVal)*150);
+    var hLucro = Math.max(2, (Math.max(lucro,0)/maxVal)*150);
+    return '<div class="month-col" title="'+MESES[i]+': '+fmtMoney(bruto)+' bruto / '+fmtMoney(lucro)+' lucro">' +
+      '<div class="bar-pair"><div class="mini-bar bruto" style="height:'+hBruto+'px"></div><div class="mini-bar lucro" style="height:'+hLucro+'px"></div></div>' +
+      '<div class="month-tag">'+MESES_ABREV[i]+'</div>' +
+    '</div>';
+  }).join("");
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Resultado anual</h2><div class="sub">Consolidado automático a partir dos meses cadastrados</div></div>' +
+      '<div class="month-nav">' +
+        '<button data-action="anual-prev-year" title="Ano anterior">&#8592;</button>' +
+        '<span class="label">'+year+'</span>' +
+        '<button data-action="anual-next-year" title="Próximo ano">&#8594;</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th></th>' + MESES_ABREV.map(function(mm){return '<th>'+mm+'</th>';}).join("") + '<th>TOTAL</th></tr></thead>' +
+      '<tbody>' +
+        row("Faturamento bruto", function(x){return x.c.fatBruto;}, fmtMoney) +
+        row("Impostos", function(x){return x.c.impostoTotal;}, fmtMoney) +
+        row("Custos + despesas", function(x){return x.c.custosTotais;}, fmtMoney) +
+        row("Lucro líquido", function(x){return x.c.lucroLiquido;}, fmtMoney) +
+        row("Margem de lucro", function(x){return x.c.margem;}, fmtPct) +
+      '</tbody>' +
+    '</table></div>' +
+    '<div class="chart">'+chartBars+'</div>' +
+    '<div class="legend"><span><i style="background:#c8dfc0"></i>Faturamento bruto</span><span><i style="background:var(--verde-shogun)"></i>Lucro líquido</span></div>' +
+  '</div>';
+}
+
+// ---------- Planejamento Anual ----------
+
+function planKey(year, month){ return year + "-" + (month<10?"0"+month:""+month); }
+
+function computePlanRow(r){
+  var bruto = (r.ticket||0) * (r.clientes||0);
+  var lucro = bruto - (r.custoEquipe||0) - (r.impostos||0) - (r.custos||0);
+  var margem = bruto>0 ? lucro/bruto : 0;
+  return {bruto:bruto, lucro:lucro, margem:margem};
+}
+
+function renderPlanejamento(){
+  var year = state.ui.planYear;
+  var month = state.ui.planMonth;
+  var key = planKey(year, month);
+  var rows = state.planejamento[key] || [];
+
+  var totalBruto=0, totalLucro=0;
+  var rowsHtml = rows.map(function(r){
+    var comp = computePlanRow(r);
+    totalBruto += comp.bruto; totalLucro += comp.lucro;
+    return '<tr data-id="'+r.id+'">' +
+      '<td><input type="text" data-field="tipo" value="'+escAttr(r.tipo)+'" style="width:130px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="valorMin" value="'+r.valorMin+'" style="width:80px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="valorIdeal" value="'+r.valorIdeal+'" style="width:80px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="ticket" value="'+r.ticket+'" style="width:80px" /></td>' +
+      '<td><input type="number" step="1" data-field="clientes" value="'+r.clientes+'" style="width:60px" /></td>' +
+      '<td class="computed money">'+fmtMoney(comp.bruto)+'</td>' +
+      '<td><input type="number" step="0.5" data-field="headTrafego" value="'+r.headTrafego+'" style="width:50px" /></td>' +
+      '<td><input type="number" step="0.5" data-field="gestorTrafego" value="'+r.gestorTrafego+'" style="width:50px" /></td>' +
+      '<td><input type="number" step="0.5" data-field="cs" value="'+r.cs+'" style="width:50px" /></td>' +
+      '<td><input type="number" step="0.5" data-field="sdr" value="'+r.sdr+'" style="width:50px" /></td>' +
+      '<td><input type="number" step="0.5" data-field="gestorProjetos" value="'+r.gestorProjetos+'" style="width:50px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="custoEquipe" value="'+r.custoEquipe+'" style="width:85px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="impostos" value="'+r.impostos+'" style="width:80px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="custos" value="'+r.custos+'" style="width:85px" /></td>' +
+      '<td class="computed money">'+fmtMoney(comp.lucro)+'</td>' +
+      '<td class="computed">'+fmtPct(comp.margem)+'</td>' +
+      '<td><input type="number" step="0.1" data-field="churnInput" value="'+round2((r.churn||0)*100)+'" style="width:55px" />%</td>' +
+      '<td><button class="icon-btn" data-action="remove-plan-row" title="Remover">&times;</button></td>' +
+    '</tr>';
+  }).join("");
+
+  // annual rollup
+  var yearRows = [];
+  for(var i=1;i<=12;i++){
+    var k = planKey(year,i);
+    var rr = state.planejamento[k] || [];
+    var b=0,l=0;
+    rr.forEach(function(r){ var cc=computePlanRow(r); b+=cc.bruto; l+=cc.lucro; });
+    yearRows.push({mes:MESES_ABREV[i-1], bruto:b, lucro:l});
+  }
+  var sem1 = yearRows.slice(0,6), sem2 = yearRows.slice(6,12);
+  var sumB1 = sum(sem1,function(x){return x.bruto;}), sumL1 = sum(sem1,function(x){return x.lucro;});
+  var sumB2 = sum(sem2,function(x){return x.bruto;}), sumL2 = sum(sem2,function(x){return x.lucro;});
+
+  var rollupHtml = yearRows.map(function(x){
+    return '<tr><td>'+x.mes+'</td><td class="money">'+fmtMoney(x.bruto)+'</td><td class="money">'+fmtMoney(x.lucro)+'</td></tr>';
+  }).join("");
+
+  var monthTabs = MESES.map(function(mm,i){
+    return '<button data-action="plan-set-month" data-month="'+(i+1)+'" class="'+((i+1)===month?"active":"")+'">'+MESES_ABREV[i]+'</button>';
+  }).join("");
+
+  return '' +
+  '<div class="panel">' +
+    '<div class="toolbar">' +
+      '<div><h2>Planejamento anual</h2><div class="sub">Metas por tipo de cliente e alocação de equipe</div></div>' +
+      '<div class="month-nav">' +
+        '<button data-action="plan-prev-year" title="Ano anterior">&#8592;</button>' +
+        '<span class="label">'+year+'</span>' +
+        '<button data-action="plan-next-year" title="Próximo ano">&#8594;</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="subtabs">'+monthTabs+'</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr>' +
+        '<th>Tipo de cliente</th><th>Vlr. mínimo</th><th>Vlr. ideal</th><th>Ticket médio</th><th>Clientes</th><th>Faturamento bruto</th>' +
+        '<th>Head Tráf.</th><th>Gestor Tráf.</th><th>CS</th><th>SDR</th><th>Gestor Proj.</th>' +
+        '<th>Custo equipe</th><th>Impostos</th><th>Custos+desp.</th><th>Lucro</th><th>Margem</th><th>Churn</th><th></th>' +
+      '</tr></thead>' +
+      '<tbody>' + (rowsHtml || '<tr><td colspan="17" class="empty-hint">Nenhuma meta cadastrada para '+MESES[month-1]+'.</td></tr>') + '</tbody>' +
+      '<tfoot><tr class="total-row"><td colspan="5">TOTAL DO MÊS</td><td class="money">'+fmtMoney(totalBruto)+'</td><td colspan="8"></td><td class="money">'+fmtMoney(totalLucro)+'</td><td colspan="2"></td></tr></tfoot>' +
+    '</table></div>' +
+    '<button class="add-row" data-action="add-plan-row">+ Adicionar tipo de cliente</button>' +
+  '</div>' +
+  '<div class="panel">' +
+    '<h2>Resumo anual do planejamento</h2>' +
+    '<div class="sub">Somatório de todos os meses de '+year+'</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th>Mês</th><th>Faturamento bruto</th><th>Lucro planejado</th></tr></thead>' +
+      '<tbody>'+rollupHtml+
+        '<tr class="group-row"><td>Semestre 1</td><td class="money">'+fmtMoney(sumB1)+'</td><td class="money">'+fmtMoney(sumL1)+'</td></tr>' +
+        '<tr class="group-row"><td>Semestre 2</td><td class="money">'+fmtMoney(sumB2)+'</td><td class="money">'+fmtMoney(sumL2)+'</td></tr>' +
+        '<tr class="total-row"><td>Anual</td><td class="money">'+fmtMoney(sumB1+sumB2)+'</td><td class="money">'+fmtMoney(sumL1+sumL2)+'</td></tr>' +
+      '</tbody>' +
+    '</table></div>' +
+  '</div>';
+}
+
+// ---------- Simulador ----------
+
+function computeScenario(s){
+  var bruto = (s.clientes||0) * (s.ticket||0);
+  var imposto = bruto * (s.impostoPct||0);
+  var lucro = bruto - imposto - (s.custos||0);
+  var margem = bruto>0 ? lucro/bruto : 0;
+  return {bruto:bruto, imposto:imposto, lucro:lucro, margem:margem};
+}
+
+function renderSimulador(){
+  var rows = state.potencial.map(function(s){
+    var comp = computeScenario(s);
+    return '<tr data-id="'+s.id+'">' +
+      '<td><input type="text" data-field="nome" value="'+escAttr(s.nome)+'" style="width:220px" /></td>' +
+      '<td><input type="number" step="1" data-field="clientes" value="'+s.clientes+'" style="width:70px" /></td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="ticket" value="'+s.ticket+'" /></td>' +
+      '<td class="computed money">'+fmtMoney(comp.bruto)+'</td>' +
+      '<td><input type="number" step="0.1" data-field="impostoPctInput" value="'+round2(s.impostoPct*100)+'" style="width:60px" />%</td>' +
+      '<td class="computed money">'+fmtMoney(comp.imposto)+'</td>' +
+      '<td class="money"><input type="number" step="0.01" data-field="custos" value="'+s.custos+'" /></td>' +
+      '<td class="computed money">'+fmtMoney(comp.lucro)+'</td>' +
+      '<td class="computed">'+fmtPct(comp.margem)+'</td>' +
+      '<td><button class="icon-btn" data-action="remove-scenario" title="Remover">&times;</button></td>' +
+    '</tr>';
+  }).join("");
+
+  return '' +
+  '<div class="panel">' +
+    '<h2>Simulador de potencial de faturamento</h2>' +
+    '<div class="sub">Compare cenários de capacidade de equipe, número de clientes e ticket médio</div>' +
+    '<div class="table-scroll"><table>' +
+      '<thead><tr><th>Cenário</th><th>Clientes</th><th>Ticket médio</th><th>Faturamento bruto</th><th>Imposto</th><th>Valor imposto</th><th>Custos+despesas</th><th>Lucro</th><th>Margem</th><th></th></tr></thead>' +
+      '<tbody>' + (rows || '<tr><td colspan="10" class="empty-hint">Nenhum cenário cadastrado.</td></tr>') + '</tbody>' +
+    '</table></div>' +
+    '<button class="add-row" data-action="add-scenario">+ Adicionar cenário</button>' +
+  '</div>';
+}
+
+// ---------- helpers ----------
+
+function escAttr(s){
+  return String(s===undefined||s===null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+}
+
+function findById(arr, id){
+  for(var i=0;i<arr.length;i++){ if(arr[i].id===id) return arr[i]; }
+  return null;
+}
+
+// ---------- event delegation ----------
+
+app.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-action]");
+  if(!btn) return;
+  var action = btn.getAttribute("data-action");
+  var row = e.target.closest("tr");
+  var id = row ? row.getAttribute("data-id") : null;
+  var key = state.ui.month;
+
+  switch(action){
+    case "dash-prev-month": state.ui.month = shiftMonth(key,-1); break;
+    case "dash-next-month": state.ui.month = shiftMonth(key,1); break;
+    case "fat-prev-month": state.ui.month = shiftMonth(key,-1); break;
+    case "fat-next-month": state.ui.month = shiftMonth(key,1); break;
+    case "fix-prev-month": state.ui.month = shiftMonth(key,-1); break;
+    case "fix-next-month": state.ui.month = shiftMonth(key,1); break;
+    case "var-prev-month": state.ui.month = shiftMonth(key,-1); break;
+    case "var-next-month": state.ui.month = shiftMonth(key,1); break;
+
+    case "add-client":
+      ensureMonth(key).clients.push({id:uid(), nome:"Novo cliente", dia:10, pago:false, bruto:0, impostoPct:state.settings.impostoPadrao});
+      break;
+    case "remove-client":
+      if(id){ var mc = ensureMonth(key); mc.clients = mc.clients.filter(function(x){return x.id!==id;}); }
+      break;
+    case "add-fixed":
+      ensureMonth(key).fixedCosts.push({id:uid(), categoria:"Outros", descricao:"Novo custo", dia:10, valor:0, pago:false});
+      break;
+    case "remove-fixed":
+      if(id){ var mf = ensureMonth(key); mf.fixedCosts = mf.fixedCosts.filter(function(x){return x.id!==id;}); }
+      break;
+    case "add-variable":
+      ensureMonth(key).variableCosts.push({id:uid(), descricao:"Novo custo", dia:10, valor:0, pago:false});
+      break;
+    case "remove-variable":
+      if(id){ var mv = ensureMonth(key); mv.variableCosts = mv.variableCosts.filter(function(x){return x.id!==id;}); }
+      break;
+
+    case "anual-prev-year": state.ui.resultYear -= 1; break;
+    case "anual-next-year": state.ui.resultYear += 1; break;
+
+    case "plan-prev-year": state.ui.planYear -= 1; break;
+    case "plan-next-year": state.ui.planYear += 1; break;
+    case "plan-set-month": state.ui.planMonth = parseInt(btn.getAttribute("data-month"),10); break;
+    case "add-plan-row": {
+      var pk = planKey(state.ui.planYear, state.ui.planMonth);
+      if(!state.planejamento[pk]) state.planejamento[pk] = [];
+      state.planejamento[pk].push({id:uid(), tipo:"Novo tipo", valorMin:0, valorIdeal:0, ticket:0, clientes:0, headTrafego:0, gestorTrafego:0, cs:0, sdr:0, gestorProjetos:0, custoEquipe:0, impostos:0, custos:0, churn:0});
+      break;
+    }
+    case "remove-plan-row": {
+      var pk2 = planKey(state.ui.planYear, state.ui.planMonth);
+      if(id && state.planejamento[pk2]){ state.planejamento[pk2] = state.planejamento[pk2].filter(function(x){return x.id!==id;}); }
+      break;
+    }
+
+    case "add-scenario":
+      state.potencial.push({id:uid(), nome:"Novo cenário", clientes:0, ticket:0, custos:0, impostoPct:0.06});
+      break;
+    case "remove-scenario":
+      if(id){ state.potencial = state.potencial.filter(function(x){return x.id!==id;}); }
+      break;
+
+    case "export-data": doExport(); return;
+    case "import-data": document.getElementById("import-input").click(); return;
+    case "reset-data":
+      if(confirm("Isso substitui todos os dados atuais pelos dados de exemplo. Deseja continuar?")){
+        state = defaultState();
+        saveState(); render();
+      }
+      return;
+
+    default: return;
+  }
+  saveState();
+  render();
+});
+
+app.addEventListener("change", function(e){
+  var t = e.target;
+  var field = t.getAttribute("data-field");
+  var action = t.getAttribute("data-action");
+  var row = t.closest("tr");
+  var id = row ? row.getAttribute("data-id") : null;
+  var key = state.ui.month;
+
+  if(action === "set-saldo-anterior"){
+    var mm = ensureMonth(key);
+    mm.saldoMesAnterior = t.value === "" ? null : Number(t.value);
+    saveState(); render(); return;
+  }
+  if(action === "set-churn"){
+    var mm2 = ensureMonth(key);
+    mm2.churnRate = t.value === "" ? null : Number(t.value)/100;
+    saveState(); render(); return;
+  }
+  if(action === "dash-set-month" || action === "fat-set-month" || action === "fix-set-month" || action === "var-set-month"){
+    if(t.value){ state.ui.month = t.value; saveState(); render(); }
+    return;
+  }
+
+  if(!field || !id) return;
+
+  var target = null;
+  var mo = ensureMonth(key);
+  target = findById(mo.clients, id) || findById(mo.fixedCosts, id) || findById(mo.variableCosts, id) || findById(state.potencial, id);
+  if(!target){
+    var pk = planKey(state.ui.planYear, state.ui.planMonth);
+    if(state.planejamento[pk]) target = findById(state.planejamento[pk], id);
+  }
+  if(!target) return;
+
+  if(field === "pago"){
+    target.pago = t.checked;
+  } else if(field === "impostoPctInput"){
+    target.impostoPct = Number(t.value)/100;
+  } else if(field === "churnInput"){
+    target.churn = Number(t.value)/100;
+  } else if(t.type === "number"){
+    target[field] = t.value === "" ? 0 : Number(t.value);
+  } else {
+    target[field] = t.value;
+  }
+  saveState();
+  render();
+});
+
+tabsEl.addEventListener("click", function(e){
+  var btn = e.target.closest("[data-action='switch-tab']");
+  if(!btn) return;
+  state.ui.tab = btn.getAttribute("data-tab");
+  saveState();
+  render();
+});
+
+document.querySelector("header.app-header .header-actions").addEventListener("click", function(e){
+  var btn = e.target.closest("[data-action]");
+  if(!btn) return;
+  var action = btn.getAttribute("data-action");
+  if(action === "export-data") doExport();
+  if(action === "import-data") document.getElementById("import-input").click();
+  if(action === "reset-data"){
+    if(confirm("Isso substitui todos os dados atuais pelos dados de exemplo. Deseja continuar?")){
+      state = defaultState();
+      saveState(); render();
+    }
+  }
+});
+
+function doExport(){
+  var blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+  var d = new Date();
+  var stamp = d.toISOString().slice(0,10);
+  a.href = url;
+  a.download = "financeiro-samurai-ads-" + stamp + ".json";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById("import-input").addEventListener("change", function(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      var data = JSON.parse(ev.target.result);
+      if(!data.months || !data.ui) throw new Error("Formato inválido");
+      state = data;
+      saveState();
+      render();
+    }catch(err){
+      alert("Não foi possível importar o arquivo: " + err.message);
+    }
+    e.target.value = "";
+  };
+  reader.readAsText(file);
+});
+
+render();
+
+})();
+</script>
+</body>
+</html>

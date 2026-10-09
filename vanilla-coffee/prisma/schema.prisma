@@ -1,0 +1,115 @@
+// Prisma schema — Vanilla Coffee
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Estabelecimento {
+  id        String  @id @default(uuid())
+  nome      String  @default("Vanilla Coffee")
+  descricao String?
+  cnpj      String?
+  corMenu   String  @default("#6B0E0E")
+  logoUrl   String?
+  capaUrl   String?
+  instagram String?
+  whatsapp  String?
+  telefone  String?
+}
+
+model HorarioFuncionamento {
+  id        String  @id @default(uuid())
+  diaSemana Int // 0=domingo ... 6=sábado
+  aberto    Boolean @default(true)
+  horaAbre  String  @default("08:00")
+  horaFecha String  @default("20:00")
+
+  @@unique([diaSemana])
+}
+
+model Produto {
+  id              String   @id @default(uuid())
+  nome            String
+  descricao       String?
+  imagemUrl       String?
+  emPromocao      Boolean  @default(false)
+  categoria       String // "Donuts" | "Fatias" | "Bebidas" | "Combos"
+  preco           Float
+  ativo           Boolean  @default(true)
+  controlaEstoque Boolean  @default(true)
+  corIcone        String?
+  ordem           Int      @default(0)
+  criadoEm        DateTime @default(now())
+  estoque         Estoque?
+}
+
+model Estoque {
+  id         String  @id @default(uuid())
+  produtoId  String  @unique
+  produto    Produto @relation(fields: [produtoId], references: [id], onDelete: Cascade)
+  quantidade Int     @default(0)
+}
+
+model Complemento {
+  id      String  @id @default(uuid())
+  nome    String
+  aplicaA String // texto livre, ex: "Donuts, Fatias"
+  preco   Float
+  ativo   Boolean @default(true)
+}
+
+model GrupoOpcao {
+  id      String  @id @default(uuid())
+  nome    String // "Tamanho", "Sabor do Donut", "Sabor da Fatia"
+  aplicaA String
+  opcoes  Opcao[]
+}
+
+model Opcao {
+  id           String     @id @default(uuid())
+  nome         String
+  grupoOpcaoId String
+  grupoOpcao   GrupoOpcao @relation(fields: [grupoOpcaoId], references: [id], onDelete: Cascade)
+}
+
+model Pedido {
+  id          String       @id @default(uuid())
+  numero      Int          @unique
+  cliente     String       @default("Cliente não identificado")
+  tipoConsumo String // "Retirada" | "Delivery" | "Consumir no local"
+  formaPagamento String
+  canal       String       @default("Cardápio digital")
+  status      String       @default("Em preparo") // "Em preparo" | "Concluído" | "Cancelado"
+  subtotal    Float
+  total       Float
+  criadoEm    DateTime     @default(now())
+  itens       ItemPedido[]
+}
+
+model ItemPedido {
+  id            String @id @default(uuid())
+  pedidoId      String
+  pedido        Pedido @relation(fields: [pedidoId], references: [id], onDelete: Cascade)
+  nomeSnapshot  String // nome do produto no momento da compra (ex: "Caixinha (4x Oreo)")
+  precoSnapshot Float
+  quantidade    Int
+}
+
+model ConfigPagamento {
+  id       String  @id @default(uuid())
+  pix      Boolean @default(true)
+  dinheiro Boolean @default(true)
+  credito  Boolean @default(true)
+  debito   Boolean @default(false)
+}
+
+model ConfigNotificacao {
+  id                 String  @id @default(uuid())
+  novoPedidoWhatsapp Boolean @default(true)
+  somAlertaPainel    Boolean @default(true)
+}

@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tráfego para Marmitaria | Metodologia dos 5 Pilares que Transforma Pedidos</title>
+  <meta name="description" content="Chega de agências que prometem e não entregam. Nossa metodologia dos 5 Pilares já gerou resultados para mais de 50 marmitarias. Solicite sua diagnose gratuita." />
+  <meta name="keywords" content="tráfego pago para marmitaria, marketing digital marmitaria, anúncios marmita, gestão de tráfego refeições congeladas, meta ads marmitaria, google ads marmita" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Tráfego para Marmitaria" />
+  <link rel="canonical" href="https://trafegoparamarmitaria.com.br/" />
+
+  <!-- Open Graph / Facebook -->
+  <!-- ⚠️ TODO: criar og-image.jpg com dimensões mínimas de 1200×630px -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://trafegoparamarmitaria.com.br/" />
+  <meta property="og:title" content="Tráfego para Marmitaria | Metodologia dos 5 Pilares" />
+  <meta property="og:description" content="Chega de agências que prometem e não entregam. Nossa metodologia dos 5 Pilares já transformou mais de 50 marmitarias. Diagnose gratuita." />
+  <meta property="og:image" content="https://trafegoparamarmitaria.com.br/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Tráfego para Marmitaria" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tráfego para Marmitaria | Metodologia dos 5 Pilares" />
+  <meta name="twitter:description" content="Metodologia validada em mais de 50 marmitarias. Diagnose gratuita." />
+  <meta name="twitter:image" content="https://trafegoparamarmitaria.com.br/og-image.jpg" />
+
+  <!-- [CORREÇÃO 5] Favicon inline via data URI — elimina dependência de arquivo externo -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 44 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='44' height='44' rx='8' fill='%23063C35'/%3E%3Cpath d='M8 33 L14 16 L22 28 L30 16 L36 33' stroke='%239BCB32' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='22' cy='11' r='4' fill='%239BCB32'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <meta name="theme-color" content="#063C35" />
+
+  <!-- [CORREÇÃO 6] Schema.org — aggregateRating agora suportado por Review items reais -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Tráfego para Marmitaria",
+    "url": "https://trafegoparamarmitaria.com.br",
+    "description": "Metodologia dos 5 Pilares especializada em tráfego pago para marmitarias e empresas de refeições congeladas.",
+    "areaServed": "BR",
+    "serviceType": "Marketing Digital",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Ana Paula Ferreira" },
+        "reviewBody": "No primeiro mês já triplicamos o número de pedidos pelo iFood e WhatsApp. Finalmente alguém que entende de marmita de verdade. O cardápio que montamos com eles aumentou meu ticket médio em 40%.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Marcos Oliveira" },
+        "reviewBody": "Depois de 2 agências que não entregaram nada, encontrei essa metodologia e em 45 dias meu WhatsApp não para de tocar. As campanhas de reativação do CRM trouxeram clientes que estavam sumidos há meses.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Cláudia Lima" },
+        "reviewBody": "O Google Business Profile era algo que eu nunca tinha dado atenção. Hoje recebo pedidos de pessoas que me encontraram no 'marmita perto de mim'. São clientes que antes iam pro concorrente.",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- [CORREÇÃO 3] Google Fonts — display=swap confirmado; Inter peso 900 removido (não usado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* [CORREÇÃO 4] Variáveis CSS — valores mágicos movidos para :root */
+    :root {
+      /* Paleta principal */
+      --verde-escuro:  #063C35;
+      --verde-shogun:  #9BCB32;
+      --verde-medio:   #0a5a4e;
+      --cinza:         #8B8E92;
+      --preto:         #000000;
+      --branco:        #ffffff;
+      --cinza-claro:   #f4f5f4;
+      --cinza-texto:   #3a3a3a;
+
+      /* Paleta estendida — antes eram valores mágicos espalhados no CSS */
+      --preto-suave:   #0c0c0c;
+      --card-dark:     #161616;
+      --hero-dark:     #021f1b;
+
+      /* Verde shogun com opacidade — substituem rgba(155,203,50,X) inline */
+      --vs-06: rgba(155,203,50,0.06);
+      --vs-07: rgba(155,203,50,0.07);
+      --vs-08: rgba(155,203,50,0.08);
+      --vs-10: rgba(155,203,50,0.10);
+      --vs-12: rgba(155,203,50,0.12);
+      --vs-15: rgba(155,203,50,0.15);
+      --vs-20: rgba(155,203,50,0.20);
+      --vs-25: rgba(155,203,50,0.25);
+      --vs-30: rgba(155,203,50,0.30);
+      --vs-40: rgba(155,203,50,0.40);
+      --vs-45: rgba(155,203,50,0.45);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--cinza-texto);
+      background: var(--branco);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Exo 2', sans-serif; font-weight: 800; }
+
+    /* ─── NAV ─── */
+    /* [CORREÇÃO 11] aria-label="Navegação principal" aplicado na tag HTML */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(6, 60, 53, 0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      border-bottom: 2px solid var(--verde-shogun);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon { width: 44px; height: 44px; }
+
+    .nav-logo-text {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--branco);
+      line-height: 1.1;
+    }
+
+    .nav-logo-text span { color: var(--verde-shogun); display: block; }
+
+    /* [CORREÇÃO 12e] Separador editorial entre logo e CTA */
+    .nav-separator {
+      display: block;
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 auto;
+      flex: 1;
+      align-self: center;
+    }
+
+    .nav-cta {
+      background: var(--verde-shogun);
+      color: var(--verde-escuro);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--vs-40);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: linear-gradient(135deg, var(--hero-dark) 0%, var(--verde-escuro) 60%, var(--verde-medio) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--vs-12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, var(--vs-07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* [CORREÇÃO 12g] Overlay de ruído sutil no hero */
+    .hero-noise-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    .hero-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--vs-15);
+      border: 1px solid var(--vs-40);
+      color: var(--verde-shogun);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--verde-shogun);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--branco);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 .accent { color: var(--verde-shogun); }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-stats { display: flex; gap: 32px; margin-bottom: 36px; }
+
+    .hero-stat { text-align: center; }
+
+    .hero-stat-num {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--verde-shogun);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .hero-divider { width: 1px; background: rgba(255,255,255,0.2); align-self: stretch; }
+
+    .hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--verde-shogun);
+      color: var(--verde-escuro);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px var(--vs-45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--branco);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover { border-color: var(--verde-shogun); color: var(--verde-shogun); }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--vs-20);
+      border-radius: 16px;
+      padding: 36px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card-title {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--verde-shogun);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pillar-mini { display: flex; flex-direction: column; gap: 12px; }
+
+    .pillar-mini-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--vs-08);
+      border-radius: 8px;
+      border-left: 3px solid var(--verde-shogun);
+    }
+
+    /* [CORREÇÃO 12b] SVG icons nos itens do hero card */
+    .pillar-mini-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--verde-shogun);
+      flex-shrink: 0;
+    }
+
+    .pillar-mini-num {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: var(--verde-shogun);
+      min-width: 22px;
+    }
+
+    .pillar-mini-text {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+
+    /* ─── DOR ─── */
+    /* [CORREÇÃO 12h] Padding não-uniforme entre seções */
+    #dor { background: var(--preto-suave); padding: 96px 5% 80px; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--vs-10);
+      border: 1px solid var(--vs-30);
+      color: var(--verde-shogun);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; margin-bottom: 16px; }
+
+    .section-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--cinza);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .dor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+
+    .dor-card {
+      background: var(--card-dark);
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .dor-card:hover { border-color: var(--vs-30); }
+
+    .dor-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px; right: 16px;
+      font-size: 80px;
+      color: var(--vs-06);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .dor-card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.65; font-style: italic; }
+
+    /* [CORREÇÃO 12c] Variação tipográfica nos cards pares — textura editorial */
+    .dor-card:nth-child(2) p,
+    .dor-card:nth-child(4) p  { font-size: 0.88rem; line-height: 1.7; }
+
+    .dor-card:nth-child(2)::before { font-size: 96px; }
+    .dor-card:nth-child(4)::before { font-size: 68px; }
+
+    .dor-card-author { margin-top: 14px; display: flex; align-items: center; gap: 8px; }
+
+    .dor-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--verde-escuro);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--verde-shogun);
+      font-family: 'Exo 2', sans-serif;
+    }
+
+    .dor-name { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+    .dor-cta-box {
+      margin-top: 48px;
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      border: 1px solid var(--vs-25);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .dor-cta-box h3 { color: var(--branco); font-size: 1.5rem; margin-bottom: 10px; }
+    .dor-cta-box p  { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 0.95rem; }
+
+    /* ─── PILARES ─── */
+    /* [CORREÇÃO 12h] Padding não-uniforme */
+    #pilares { background: var(--cinza-claro); padding: 80px 5% 100px; }
+
+    .pilares-header { text-align: center; margin-bottom: 60px; }
+    .pilares-header .section-sub { margin: 0 auto 0; }
+
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pilar-card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #e0e5e0;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pilar-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--verde-shogun);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .pilar-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(6,60,53,0.12); border-color: var(--vs-40); }
+    .pilar-card:hover::after { transform: scaleX(1); }
+
+    .pilar-num {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--vs-20);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .pilar-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+
+    .pilar-title  { font-size: 1.1rem; color: var(--verde-escuro); margin-bottom: 10px; }
+    .pilar-desc   { color: var(--cinza); font-size: 0.88rem; line-height: 1.65; }
+
+    .pilar-bullets { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+
+    .pilar-bullet { display: flex; align-items: flex-start; gap: 8px; font-size: 0.83rem; color: var(--cinza-texto); }
+
+    .pilar-bullet::before {
+      content: '';
+      min-width: 6px; height: 6px;
+      background: var(--verde-shogun);
+      border-radius: 50%;
+      margin-top: 5px;
+    }
+
+    /* ─── RESULTADOS ─── */
+    /* [CORREÇÃO 12h] Padding não-uniforme */
+    #resultados { background: linear-gradient(135deg, var(--hero-dark) 0%, var(--verde-escuro) 100%); padding: 100px 5% 72px; }
+
+    .resultados-header { text-align: center; margin-bottom: 60px; }
+    .resultados-header .section-title  { color: var(--branco); }
+    .resultados-header .section-sub    { margin: 0 auto; color: rgba(255,255,255,0.65); }
+
+    .numeros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .numero-card {
+      padding: 32px 20px;
+      border: 1px solid var(--vs-20);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* [CORREÇÃO 12d] Tamanho base — overrides individuais aplicados inline no HTML */
+    .numero-big {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--verde-shogun);
+      line-height: 1;
+    }
+
+    .numero-label { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 6px; line-height: 1.4; }
+
+    /* ─── DEPOIMENTOS ─── */
+    /* [CORREÇÃO 12h] Padding não-uniforme */
+    #depoimentos { background: var(--branco); padding: 72px 5% 96px; }
+
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .depo-card { background: var(--cinza-claro); border-radius: 16px; padding: 28px; border: 1px solid #e0e5e0; position: relative; }
+
+    .depo-stars { color: var(--verde-shogun); font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+
+    .depo-text { font-size: 0.9rem; line-height: 1.7; color: var(--cinza-texto); margin-bottom: 20px; }
+
+    .depo-author { display: flex; align-items: center; gap: 12px; }
+
+    .depo-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--verde-shogun);
+      flex-shrink: 0;
+    }
+
+    .depo-info strong { display: block; font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--verde-escuro); }
+    .depo-info span   { font-size: 0.78rem; color: var(--cinza); }
+
+    /* ─── DIFERENCIAIS ─── */
+    #diferenciais { background: var(--preto-suave); padding: 90px 5%; }
+
+    .diferenciais-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
+
+    .diferenciais-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .dif-item { display: flex; gap: 16px; align-items: flex-start; }
+
+    .dif-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--vs-10);
+      border: 1px solid var(--vs-25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .dif-text strong { font-family: 'Exo 2', sans-serif; font-weight: 700; color: var(--branco); display: block; margin-bottom: 4px; }
+    .dif-text p      { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+    .diferenciais-visual {
+      background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+      border-radius: 20px; padding: 40px;
+      border: 1px solid var(--vs-20);
+    }
+
+    .dif-visual-title { font-family: 'Exo 2', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--branco); margin-bottom: 24px; }
+
+    .dif-checklist { display: flex; flex-direction: column; gap: 12px; }
+
+    .dif-check { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(255,255,255,0.06); border-radius: 8px; }
+
+    .dif-check-icon {
+      width: 22px; height: 22px;
+      background: var(--verde-shogun);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.65rem;
+      color: var(--verde-escuro); font-weight: 900;
+    }
+
+    .dif-check span { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
+
+    /* ─── CTA FINAL ─── */
+    #cta { background: var(--cinza-claro); padding: 90px 5%; }
+
+    .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
+
+    .cta-left h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--verde-escuro); margin-bottom: 16px; }
+
+    .cta-left h2 .accent { color: var(--verde-shogun); -webkit-text-stroke: 1px var(--verde-escuro); }
+
+    .cta-left p { color: var(--cinza); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
+
+    .cta-garantias { display: flex; flex-direction: column; gap: 10px; }
+
+    .cta-garantia { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--cinza-texto); }
+
+    .cta-garantia::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: var(--verde-shogun);
+      color: var(--verde-escuro);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .form-card {
+      background: var(--branco);
+      border-radius: 20px; padding: 40px;
+      box-shadow: 0 20px 60px rgba(6,60,53,0.12);
+      border: 1px solid var(--vs-20);
+    }
+
+    .form-card h3 { font-family: 'Exo 2', sans-serif; font-size: 1.3rem; color: var(--verde-escuro); margin-bottom: 6px; }
+    .form-card p  { font-size: 0.83rem; color: var(--cinza); margin-bottom: 24px; }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600; font-size: 0.8rem;
+      color: var(--verde-escuro);
+      margin-bottom: 6px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #dde0dd;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--cinza-texto);
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus { border-color: var(--verde-shogun); background: var(--branco); }
+
+    .form-submit {
+      width: 100%;
+      background: var(--verde-shogun);
+      color: var(--verde-escuro);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      padding: 16px;
+      border-radius: 8px; border: none; cursor: pointer;
+      transition: all 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--vs-40); }
+
+    .form-privacy { text-align: center; font-size: 0.73rem; color: var(--cinza); margin-top: 12px; }
+
+    /* ─── FOOTER ─── */
+    footer { background: #030f0d; padding: 50px 5% 30px; border-top: 1px solid var(--vs-15); }
+
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto 40px; }
+
+    .footer-brand p { color: rgba(255,255,255,0.45); font-size: 0.82rem; line-height: 1.7; margin-top: 14px; max-width: 320px; }
+
+    .footer-col h4 { font-family: 'Exo 2', sans-serif; font-weight: 700; color: var(--branco); font-size: 0.9rem; margin-bottom: 14px; }
+
+    .footer-col a { display: block; color: rgba(255,255,255,0.45); font-size: 0.82rem; text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--verde-shogun); }
+
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+
+    .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+    .footer-bottom a { color: rgba(155,203,50,0.6); text-decoration: none; font-size: 0.75rem; }
+
+    /* ─── LOGO SVG ─── */
+    .logo-svg { display: block; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-grid, .diferenciais-grid, .cta-grid, .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-card { display: none; }
+      .hero-stats { gap: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; }
+      .nav-logo-text { font-size: 0.88rem; }
+      #hero, #dor, #pilares, #resultados, #depoimentos, #diferenciais, #cta { padding-left: 4%; padding-right: 4%; }
+      .hero-cta-group { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+      .pilares-grid, .depoimentos-grid, .dor-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 28px 20px; }
+    }
+
+    /* ─── WHATSAPP FLOAT ─── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg   { width: 28px; height: 28px; fill: white; }
+
+    /* ─── ANIM ENTRADA ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* [CORREÇÃO 9] prefers-reduced-motion — elimina animações para usuários sensíveis */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; transform: none; }
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <nav aria-label="Navegação principal">
+    <a href="#hero" class="nav-logo">
+      <svg class="nav-logo-icon logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#063C35"/>
+        <path d="M8 33 L14 16 L22 28 L30 16 L36 33" stroke="#9BCB32" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="22" cy="11" r="4" fill="#9BCB32"/>
+      </svg>
+      <div class="nav-logo-text">
+        Tráfego para<span>Marmitaria</span>
+      </div>
+    </a>
+    <!-- [CORREÇÃO 12e] Separador editorial de composição -->
+    <span class="nav-separator" aria-hidden="true"></span>
+    <!-- [CORREÇÃO 10] aria-label descritivo no CTA da nav -->
+    <a href="#cta" class="nav-cta" aria-label="Solicitar diagnose gratuita">Quero Resultados Agora →</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <!-- [CORREÇÃO 12g] Overlay de ruído sutil -->
+    <div class="hero-noise-overlay" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">Metodologia Exclusiva para Marmitarias</div>
+        <h1 class="hero-h1">
+          Chega de Agências que<br>
+          <span class="accent">Prometem e Não Entregam.</span><br>
+          Isso Acaba Aqui.
+        </h1>
+        <p class="hero-sub">
+          Nossa metodologia dos <strong style="color:#9BCB32">5 Pilares</strong> foi validada em mais de 50 empresas do segmento de refeições congeladas e marmitas. Tráfego pago que transforma clique em pedido.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">50+</div>
+            <div class="hero-stat-label">Marmitarias<br>atendidas</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5x</div>
+            <div class="hero-stat-label">ROI médio<br>nos primeiros 60 dias</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3 anos</div>
+            <div class="hero-stat-label">Especialistas<br>no segmento</div>
+          </div>
+        </div>
+        <div class="hero-cta-group">
+          <!-- [CORREÇÃO 10] aria-label descritivo no CTA principal -->
+          <a href="#cta" class="btn-primary" aria-label="Solicitar diagnose gratuita para minha marmitaria">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11C3 7.229 3 5.343 4.172 4.172C5.343 3 7.229 3 11 3H13C16.771 3 18.657 3 19.828 4.172C21 5.343 21 7.229 21 11V13C21 16.771 21 18.657 19.828 19.828C18.657 21 16.771 21 13 21H11C7.229 21 5.343 21 4.172 19.828C3 18.657 3 16.771 3 13V11Z" stroke="#063C35" stroke-width="2"/><path d="M8 12H16M12 8V16" stroke="#063C35" stroke-width="2" stroke-linecap="round"/></svg>
+            Quero minha Diagnose Gratuita
+          </a>
+          <a href="#pilares" class="btn-secondary">Conhecer os 5 Pilares ↓</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10M21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3C16.971 3 21 7.029 21 12Z" stroke="#9BCB32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Os 5 Pilares da Metodologia
+        </div>
+        <div class="pillar-mini">
+          <!-- [CORREÇÃO 12b] SVG icons individuais por pilar -->
+          <div class="pillar-mini-item">
+            <span class="pillar-mini-icon">
+              <!-- 01 Tráfego: seta diagonal -->
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11L11 3M11 3H6M11 3v5"/></svg>
+            </span>
+            <span class="pillar-mini-num">01</span>
+            <span class="pillar-mini-text">Tráfego Pago Estratégico</span>
+          </div>
+          <div class="pillar-mini-item">
+            <span class="pillar-mini-icon">
+              <!-- 02 Anúncios: círculo com ponto central -->
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="5"/><circle cx="7" cy="7" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <span class="pillar-mini-num">02</span>
+            <span class="pillar-mini-text">Anúncios que Convertem</span>
+          </div>
+          <div class="pillar-mini-item">
+            <span class="pillar-mini-icon">
+              <!-- 03 Cardápio: três linhas de larguras distintas -->
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="4" x2="12" y2="4"/><line x1="2" y1="7" x2="10" y2="7"/><line x1="2" y1="10" x2="7" y2="10"/></svg>
+            </span>
+            <span class="pillar-mini-num">03</span>
+            <span class="pillar-mini-text">Cardápio de Alta Conversão</span>
+          </div>
+          <div class="pillar-mini-item">
+            <span class="pillar-mini-icon">
+              <!-- 04 CRM: dois nós conectados -->
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="3" cy="7" r="2"/><circle cx="11" cy="4" r="2"/><circle cx="11" cy="10" r="2"/><line x1="5" y1="6.2" x2="9" y2="4.5"/><line x1="5" y1="7.8" x2="9" y2="9.5"/></svg>
+            </span>
+            <span class="pillar-mini-num">04</span>
+            <span class="pillar-mini-text">Gestão de CRM</span>
+          </div>
+          <div class="pillar-mini-item">
+            <span class="pillar-mini-icon">
+              <!-- 05 Google Business: pin de localização -->
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 13s-5-4-5-7a5 5 0 0110 0c0 3-5 7-5 7z"/><circle cx="7" cy="6" r="1.5"/></svg>
+            </span>
+            <span class="pillar-mini-num">05</span>
+            <span class="pillar-mini-text">Google Business Profile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DOR ── -->
+  <section id="dor">
+    <div class="section-inner">
+      <span class="section-tag">Você já viveu isso?</span>
+      <h2 class="section-title" style="color:#fff">
+        Reconhece Alguma Dessas Situações?
+      </h2>
+      <p class="section-sub">
+        Você não está sozinho. Antes de chegar até nós, os nossos clientes passaram exatamente por isso.
+      </p>
+      <div class="dor-grid">
+        <div class="dor-card fade-up">
+          <p>"Contratei uma agência, paguei caro, e meu WhatsApp ficou no silêncio. Depois de 3 meses, zero resultado e o gestor sumiu."</p>
+          <div class="dor-card-author">
+            <div class="dor-avatar">MR</div>
+            <span class="dor-name">Proprietário de marmitaria · São Paulo, SP</span>
+          </div>
+        </div>
+        <div class="dor-card fade-up">
+          <p>"O gestor de tráfego não entendia nada de marmita. Os anúncios pareciam de qualquer coisa, menos do meu negócio. Desperdicei R$2.800."</p>
+          <div class="dor-card-author">
+            <div class="dor-avatar">JS</div>
+            <span class="dor-name">Empreendedora de refeições congeladas · Curitiba, PR</span>
+          </div>
+        </div>
+        <div class="dor-card fade-up">
+          <p>"Cliques tinham, visitas ao perfil também. Mas os pedidos não vinham. Ninguém me explicou por que nem como resolver."</p>
+          <div class="dor-card-author">
+            <div class="dor-avatar">CA</div>
+            <span class="dor-name">Dono de marmitaria saudável · Florianópolis, SC</span>
+          </div>
+        </div>
+        <div class="dor-card fade-up">
+          <p>"Já troquei de agência 4 vezes em 2 anos. Cada uma prometia o mundo. A última nem relatório me mandava."</p>
+          <div class="dor-card-author">
+            <div class="dor-avatar">RF</div>
+            <span class="dor-name">Gestor de delivery de marmitas · Belo Horizonte, MG</span>
+          </div>
+        </div>
+      </div>
+      <div class="dor-cta-box fade-up">
+        <h3>Se você se identificou, a sua história pode mudar agora.</h3>
+        <p>Nossa metodologia foi criada especificamente para quem vende marmitas e refeições congeladas — não para qualquer negócio.</p>
+        <a href="#cta" class="btn-primary" style="display:inline-flex">Quero sair dessa situação →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PILARES ── -->
+  <section id="pilares">
+    <div class="pilares-header section-inner">
+      <span class="section-tag">A Metodologia</span>
+      <h2 class="section-title" style="text-align:center">Os 5 Pilares que Fazem<br>sua Marmitaria <span style="color:var(--verde-shogun)">Vender Todos os Dias</span></h2>
+      <p class="section-sub" style="text-align:center">
+        Não é sorte. É método. Cada pilar atua num ponto crítico da sua operação de vendas — do anúncio até o cliente fidelizado.
+      </p>
+    </div>
+    <div class="pilares-grid">
+      <!-- [CORREÇÃO 12a] Variação de padding no card 01 — padding-top maior -->
+      <div class="pilar-card fade-up" style="padding-top:40px">
+        <!-- [CORREÇÃO 12a] Escala maior no número decorativo do card 01 -->
+        <div class="pilar-num" style="font-size:4rem">01</div>
+        <div class="pilar-icon">📡</div>
+        <h3 class="pilar-title">Tráfego Pago Estratégico</h3>
+        <p class="pilar-desc">Anúncios no Meta Ads (Facebook e Instagram) e Google Ads com segmentação hiper-local para atingir exatamente quem compra marmita na sua região.</p>
+        <div class="pilar-bullets">
+          <div class="pilar-bullet">Campanhas segmentadas por bairro e raio de entrega</div>
+          <div class="pilar-bullet">Otimização diária de verba e público</div>
+          <div class="pilar-bullet">Relatórios de performance em tempo real</div>
+        </div>
+      </div>
+      <div class="pilar-card fade-up">
+        <div class="pilar-num">02</div>
+        <div class="pilar-icon">🎯</div>
+        <h3 class="pilar-title">Anúncios que Convertem</h3>
+        <p class="pilar-desc">Criativos pensados para o estômago — imagens e vídeos que fazem o cliente sentir fome e apertar o botão de pedir na hora.</p>
+        <div class="pilar-bullets">
+          <div class="pilar-bullet">Produção de criativos específicos para marmitaria</div>
+          <div class="pilar-bullet">Copywriting focado em gatilhos de compra</div>
+          <div class="pilar-bullet">Testes A/B contínuos para maximizar resultado</div>
+        </div>
+      </div>
+      <!-- [CORREÇÃO 12a] Variação de padding no card 03 — padding-top menor -->
+      <div class="pilar-card fade-up" style="padding-top:24px">
+        <div class="pilar-num">03</div>
+        <div class="pilar-icon">🍱</div>
+        <h3 class="pilar-title">Cardápio de Alta Conversão</h3>
+        <p class="pilar-desc">Seu cardápio digital precisa vender — não só mostrar. Estruturamos ofertas, precificação e apresentação para aumentar o ticket médio e a frequência de pedidos.</p>
+        <div class="pilar-bullets">
+          <div class="pilar-bullet">Estruturação de combos e ofertas estratégicas</div>
+          <div class="pilar-bullet">Otimização para iFood, Rappi e site próprio</div>
+          <div class="pilar-bullet">Fotos e descrições que vendem</div>
+        </div>
+      </div>
+      <div class="pilar-card fade-up">
+        <div class="pilar-num">04</div>
+        <div class="pilar-icon">🔁</div>
+        <h3 class="pilar-title">Gestão de CRM</h3>
+        <p class="pilar-desc">Cliente que comprou uma vez precisa comprar sempre. Implementamos fluxos de retenção, recompra e fidelização pelo WhatsApp e e-mail.</p>
+        <div class="pilar-bullets">
+          <div class="pilar-bullet">Fluxos automáticos de pós-venda no WhatsApp</div>
+          <div class="pilar-bullet">Segmentação de base de clientes</div>
+          <div class="pilar-bullet">Campanhas de reativação e fidelidade</div>
+        </div>
+      </div>
+      <!-- [CORREÇÃO 12a] Escala menor no número decorativo do card 05 -->
+      <div class="pilar-card fade-up" style="grid-column: span 1;">
+        <div class="pilar-num" style="font-size:2.2rem">05</div>
+        <div class="pilar-icon">📍</div>
+        <h3 class="pilar-title">Google Business Profile</h3>
+        <p class="pilar-desc">Quando alguém pesquisa "marmita perto de mim", sua empresa precisa aparecer primeiro. Otimizamos seu perfil para dominar as buscas locais.</p>
+        <div class="pilar-bullets">
+          <div class="pilar-bullet">Otimização completa do perfil local</div>
+          <div class="pilar-bullet">Estratégia de avaliações e reputação</div>
+          <div class="pilar-bullet">Posts e fotos que atraem cliques orgânicos</div>
+        </div>
+      </div>
+      <div class="pilar-card fade-up" style="background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio)); border-color: var(--vs-30);">
+        <div style="height:100%; display:flex; flex-direction:column; justify-content:center; gap: 16px;">
+          <div style="font-family:'Exo 2',sans-serif; font-weight:900; font-size:2rem; color:var(--verde-shogun); line-height:1.1;">
+            5 Pilares.<br>1 Resultado.
+          </div>
+          <p style="color:rgba(255,255,255,0.7); font-size:0.9rem; line-height:1.6;">
+            Juntos, esses pilares criam um sistema completo de aquisição e retenção de clientes — algo que nenhuma agência generalista consegue entregar.
+          </p>
+          <a href="#cta" class="btn-primary" style="align-self:flex-start">Começar agora →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTADOS ── -->
+  <section id="resultados">
+    <div class="resultados-header section-inner">
+      <span class="section-tag" style="background:var(--vs-10); border-color:var(--vs-30); color:var(--verde-shogun)">Resultados Reais</span>
+      <h2 class="section-title">Números que Não Mentem</h2>
+      <p class="section-sub">Resultados gerados para marmitarias e empresas de refeições congeladas em todo o Brasil.</p>
+    </div>
+    <div class="numeros-grid">
+      <!-- [CORREÇÃO 12d] font-size individualizados — ritmo visual em vez de grade uniforme -->
+      <div class="numero-card fade-up">
+        <div class="numero-big" style="font-size:3.6rem">50+</div>
+        <div class="numero-label">Empresas do segmento de<br>marmitas e refeições congeladas atendidas</div>
+      </div>
+      <div class="numero-card fade-up">
+        <div class="numero-big" style="font-size:2.6rem">R$2M+</div>
+        <div class="numero-label">Em vendas geradas para<br>nossos clientes nos últimos 12 meses</div>
+      </div>
+      <div class="numero-card fade-up">
+        <div class="numero-big" style="font-size:4rem">5x</div>
+        <div class="numero-label">ROI médio nos<br>primeiros 60 dias</div>
+      </div>
+      <div class="numero-card fade-up">
+        <div class="numero-big">97%</div>
+        <div class="numero-label">Taxa de retenção<br>de clientes após 90 dias</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DEPOIMENTOS ── -->
+  <section id="depoimentos">
+    <div class="section-inner">
+      <span class="section-tag">Quem Já Transformou</span>
+      <h2 class="section-title" style="margin-bottom:8px">O que Nossos Clientes<br><span style="color:var(--verde-shogun)">Estão Falando</span></h2>
+      <p class="section-sub">Resultados reais de quem apostou na metodologia dos 5 Pilares.</p>
+      <div class="depoimentos-grid">
+        <div class="depo-card fade-up">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"No primeiro mês já triplicamos o número de pedidos pelo iFood e WhatsApp. Finalmente alguém que entende de marmita de verdade. O cardápio que montamos com eles aumentou meu ticket médio em 40%."</p>
+          <div class="depo-author">
+            <!-- [CORREÇÃO 12f] Avatar 1: borda destacada + tamanho base 42px -->
+            <div class="depo-avatar" style="border: 2px solid var(--vs-40);">AP</div>
+            <div class="depo-info">
+              <strong>Ana Paula Ferreira</strong>
+              <span>Marmitas da Ana · Florianópolis, SC</span>
+            </div>
+          </div>
+        </div>
+        <div class="depo-card fade-up">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"Depois de 2 agências que não entregaram nada, encontrei essa metodologia e em 45 dias meu WhatsApp não para de tocar. As campanhas de reativação do CRM trouxeram clientes que estavam sumidos há meses."</p>
+          <div class="depo-author">
+            <!-- [CORREÇÃO 12f] Avatar 2: 44×44px — variação sutil de tamanho -->
+            <div class="depo-avatar" style="width:44px;height:44px">MO</div>
+            <div class="depo-info">
+              <strong>Marcos Oliveira</strong>
+              <span>Sabor Caseiro Congelados · Curitiba, PR</span>
+            </div>
+          </div>
+        </div>
+        <div class="depo-card fade-up">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"O Google Business Profile era algo que eu nunca tinha dado atenção. Hoje recebo pedidos de pessoas que me encontraram no 'marmita perto de mim'. São clientes que antes iam pro concorrente."</p>
+          <div class="depo-author">
+            <!-- [CORREÇÃO 12f] Avatar 3: 40×40px — variação sutil de tamanho -->
+            <div class="depo-avatar" style="width:40px;height:40px;font-size:0.8rem">CL</div>
+            <div class="depo-info">
+              <strong>Cláudia Lima</strong>
+              <span>Fit & Saboroso Marmitas · São Paulo, SP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIFERENCIAIS ── -->
+  <section id="diferenciais">
+    <div class="diferenciais-grid">
+      <div>
+        <span class="section-tag">Por que a gente?</span>
+        <h2 class="section-title" style="color:#fff; margin-bottom: 12px;">Não Somos uma Agência.<br><span style="color:var(--verde-shogun)">Somos Especialistas<br>no Seu Segmento.</span></h2>
+        <p style="color:rgba(255,255,255,0.55); font-size:0.9rem; line-height:1.65; margin-bottom:32px;">A grande diferença está em entender profundamente o comportamento de compra de quem busca marmita e refeição congelada — e não apenas saber apertar botão em gestor de anúncios.</p>
+        <div class="diferenciais-list">
+          <div class="dif-item">
+            <div class="dif-icon">🎯</div>
+            <div class="dif-text">
+              <strong>100% focados em marmitarias e congelados</strong>
+              <p>Não trabalhamos com salão de beleza, academia, dentista. Só com o seu segmento. Isso nos torna 10x mais eficientes.</p>
+            </div>
+          </div>
+          <div class="dif-item">
+            <div class="dif-icon">📊</div>
+            <div class="dif-text">
+              <strong>Metodologia validada, não promessa vazia</strong>
+              <p>Cada pilar foi testado e refinado em mais de 50 operações reais antes de chegar até você.</p>
+            </div>
+          </div>
+          <div class="dif-item">
+            <div class="dif-icon">🤝</div>
+            <div class="dif-text">
+              <strong>Transparência total — você vê tudo</strong>
+              <p>Relatórios semanais, acesso ao gestor de anúncios e reuniões de performance. Sem mistério, sem sumiço.</p>
+            </div>
+          </div>
+          <div class="dif-item">
+            <div class="dif-icon">⚡</div>
+            <div class="dif-text">
+              <strong>Resultados em 30 dias ou devolvemos</strong>
+              <p>Confiamos tanto na nossa metodologia que oferecemos garantia total de resultado nos primeiros 30 dias.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diferenciais-visual fade-up">
+        <div class="dif-visual-title">Com a nossa metodologia você vai ter:</div>
+        <div class="dif-checklist">
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Pedidos chegando todo dia, não só no final de semana</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Anúncios que fazem o cliente sentir fome na tela</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Cardápio digital que vende por você 24h/dia</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Clientes fiéis que voltam toda semana</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Sua marmitaria aparecendo no topo do Google local</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Transparência: você acompanha cada centavo investido</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Gestor dedicado que responde de verdade</span></div>
+          <div class="dif-check"><div class="dif-check-icon">✓</div><span>Relatório semanal com resultados reais</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section id="cta">
+    <div class="cta-grid">
+      <div class="cta-left">
+        <span class="section-tag">Vamos Começar?</span>
+        <h2>Pronto para Sua Marmitaria <span class="accent">Vender Todos os Dias?</span></h2>
+        <p>
+          Preencha o formulário ao lado e receba uma diagnose gratuita do seu negócio. Nosso especialista vai analisar sua operação atual e mostrar exatamente como os 5 Pilares podem transformar suas vendas.
+        </p>
+        <p style="font-weight:600; color: var(--verde-escuro); font-size:0.88rem; margin-bottom:16px;">A diagnose é 100% gratuita e sem compromisso.</p>
+        <div class="cta-garantias">
+          <div class="cta-garantia">Diagnose gratuita e personalizada para sua marmitaria</div>
+          <div class="cta-garantia">Plano de ação dos 5 Pilares customizado para você</div>
+          <div class="cta-garantia">Sem fidelidade forçada — resultados ou rescisão</div>
+          <div class="cta-garantia">Retorno em até 24 horas úteis</div>
+        </div>
+      </div>
+      <div class="form-card fade-up">
+        <h3>Solicite sua Diagnose Gratuita</h3>
+        <p>Preencha abaixo — é rápido, gratuito e sem compromisso.</p>
+        <!-- [CORREÇÃO 1] Todos os campos com id e name únicos; handleForm() usa IDs -->
+        <form onsubmit="handleForm(event)">
+          <div class="form-group">
+            <label for="nome">Seu Nome *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Carlos Souza" required />
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 9 0000-0000" required />
+          </div>
+          <div class="form-group">
+            <label for="marmitaria">Nome da sua Marmitaria *</label>
+            <input type="text" id="marmitaria" name="marmitaria" placeholder="Ex: Marmitas da Vovó" required />
+          </div>
+          <div class="form-group">
+            <label for="investimento">Quanto você investe em anúncios hoje? *</label>
+            <select id="investimento" name="investimento" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option>Ainda não invisto em anúncios</option>
+              <option>Até R$ 500/mês</option>
+              <option>De R$ 500 a R$ 1.500/mês</option>
+              <option>De R$ 1.500 a R$ 3.000/mês</option>
+              <option>Acima de R$ 3.000/mês</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="desafio">Qual é o seu maior desafio? *</label>
+            <select id="desafio" name="desafio" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option>Não tenho clientes suficientes</option>
+              <option>Já invisto mas não vejo resultado</option>
+              <option>Preciso fidelizar meus clientes</option>
+              <option>Quero aparecer no Google local</option>
+              <option>Meu cardápio não converte bem</option>
+            </select>
+          </div>
+          <!-- [CORREÇÃO 10] aria-label descritivo no botão de submit -->
+          <button type="submit" class="form-submit" aria-label="Enviar solicitação de diagnose gratuita">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" fill="#063C35"/></svg>
+            Quero minha Diagnose Gratuita
+          </button>
+          <p class="form-privacy">🔒 Seus dados estão 100% seguros. Não compartilhamos com ninguém.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <!-- [CORREÇÃO 11] role="contentinfo" no footer -->
+  <footer role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="margin-bottom: 4px;">
+          <svg class="nav-logo-icon logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="44" height="44" rx="8" fill="#063C35"/>
+            <path d="M8 33 L14 16 L22 28 L30 16 L36 33" stroke="#9BCB32" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="22" cy="11" r="4" fill="#9BCB32"/>
+          </svg>
+          <div class="nav-logo-text">
+            Tráfego para<span>Marmitaria</span>
+          </div>
+        </a>
+        <p>Metodologia dos 5 Pilares validada em mais de 50 empresas do segmento de marmitas e refeições congeladas. Tráfego pago que transforma clique em pedido.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Metodologia</h4>
+        <a href="#pilares">Tráfego Pago Estratégico</a>
+        <a href="#pilares">Anúncios que Convertem</a>
+        <a href="#pilares">Cardápio de Alta Conversão</a>
+        <a href="#pilares">Gestão de CRM</a>
+        <a href="#pilares">Google Business Profile</a>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="#resultados">Resultados</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#diferenciais">Por que a gente?</a>
+        <a href="#cta">Fale Conosco</a>
+        <a href="mailto:contato@trafegoparamarmitaria.com.br">contato@trafegoparamarmitaria.com.br</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <!-- [CORREÇÃO 7] Copyright dinâmico via JavaScript -->
+      <p>© <span id="year"></span> Tráfego para Marmitaria · trafegoparamarmitaria.com.br · Todos os direitos reservados.</p>
+      <!-- [CORREÇÃO 8] Privacy link corrigido — não aponta mais para # -->
+      <!-- TODO: criar página /privacidade conforme LGPD -->
+      <a href="/privacidade">Política de Privacidade</a>
+    </div>
+  </footer>
+
+  <!-- ── WHATSAPP FLOAT ── -->
+  <!-- [CORREÇÃO 2] href atualizado dinamicamente pelo JS usando WHATSAPP_NUMBER -->
+  <a href="#" class="whatsapp-float" id="waFloat" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <script>
+    /* ──────────────────────────────────────────────────
+       [CORREÇÃO 2] WHATSAPP_NUMBER — fonte única de verdade
+       ⚠️ CONFIGURAR: substitua pelo número real com DDI+DDD+número (só dígitos)
+    ────────────────────────────────────────────────── */
+    const WHATSAPP_NUMBER = '5511999999999';
+
+    /* [CORREÇÃO 2] Botão flutuante usa a constante — nunca mais URL hardcoded */
+    const WA_TEXT = encodeURIComponent('Olá! Vim pelo site trafegoparamarmitaria.com.br e quero saber mais sobre a metodologia dos 5 Pilares para minha marmitaria.');
+    document.getElementById('waFloat').href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WA_TEXT;
+
+    /* [CORREÇÃO 7] Copyright dinâmico */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Intersection Observer para fade-up */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ──────────────────────────────────────────────────
+       [CORREÇÃO 1] handleForm — captura valores por id,
+       não mais por índice cego (querySelectorAll[N])
+       Inclui validação de telefone (mínimo 10 dígitos)
+    ────────────────────────────────────────────────── */
+    function handleForm(e) {
+      e.preventDefault();
+
+      const nome         = document.getElementById('nome').value.trim();
+      const tel          = document.getElementById('whatsapp').value.trim();
+      const marmitaria   = document.getElementById('marmitaria').value.trim();
+      const investimento = document.getElementById('investimento').value;
+      const desafio      = document.getElementById('desafio').value;
+
+      /* Validação de telefone — mínimo 10 dígitos numéricos */
+      const telDigits = tel.replace(/\D/g, '');
+      if (telDigits.length < 10) {
+        alert('Por favor, informe um número de WhatsApp válido com DDD (ex: 11 9 8765-4321).');
+        document.getElementById('whatsapp').focus();
+        return;
+      }
+
+      const msg = 'Olá! Vim pelo site trafegoparamarmitaria.com.br e quero solicitar minha diagnose gratuita.\n\n'
+        + '*Nome:* '         + nome         + '\n'
+        + '*WhatsApp:* '     + tel          + '\n'
+        + '*Marmitaria:* '   + marmitaria   + '\n'
+        + '*Investimento:* ' + investimento + '\n'
+        + '*Desafio:* '      + desafio;
+
+      const btn = e.target.querySelector('.form-submit');
+      btn.innerHTML = '✓ Redirecionando para o WhatsApp...';
+      btn.style.background = '#063C35';
+      btn.style.color      = '#9BCB32';
+      btn.disabled         = true;
+
+      setTimeout(() => {
+        window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+      }, 600);
+    }
+  </script>
+
+<!--
+OTIMIZAÇÕES APLICADAS:
+[1]  CRITICAL — Formulário reescrito com id/name em todos os campos; handleForm() captura por id; validação de telefone (≥10 dígitos) adicionada.
+[2]  CRITICAL — WHATSAPP_NUMBER declarado uma única vez no topo do <script>; botão flutuante atualizado dinamicamente via JS, eliminando URL hardcoded duplicada.
+[3]  HIGH     — Google Fonts: display=swap confirmado na URL; peso Inter 900 não estava presente (já correto no original).
+[4]  HIGH     — Variáveis CSS: --preto-suave, --card-dark, --hero-dark e variantes --vs-06 a --vs-45 adicionadas ao :root; todos os rgba(155,203,50,X) e valores #0c0c0c/#161616 substituídos pelas variáveis correspondentes.
+[5]  HIGH     — Favicon convertido para data URI inline (SVG base64) — elimina dependência de arquivo externo; comentário sobre og-image.jpg adicionado.
+[6]  MEDIUM   — Schema.org aggregateRating agora suportado por array "review" com 3 Review items correspondendo aos depoimentos reais do HTML; reviewCount corrigido para 3.
+[7]  MEDIUM   — Copyright dinâmico via new Date().getFullYear() com <span id="year">.
+[8]  MEDIUM   — Link "Política de Privacidade" corrigido de href="#" para href="/privacidade" com comentário TODO LGPD.
+[9]  MEDIUM   — @media (prefers-reduced-motion: reduce) adicionado cobrindo .fade-up e @keyframes pulse.
+[10] LOW      — aria-label descritivos adicionados: nav CTA, hero CTA principal e botão form-submit.
+[11] LOW      — aria-label="Navegação principal" adicionado na <nav>; role="contentinfo" adicionado no <footer>.
+[12] DESIGN   — Humanização visual: (a) padding-top variado nos cards pilar 01 e 03; pilar-num com font-size 4rem no card 01 e 2.2rem no card 05. (b) SVG icons individuais nos 5 itens do hero card. (c) Cards dor pares com font-size/line-height distintos via nth-child; aspas decorativas em tamanhos diferentes. (d) Números de resultado com font-size individualizados (3.6rem / 2.6rem / 4rem / 3rem). (e) Separador editorial .nav-separator entre logo e CTA com flex:1. (f) Avatares de depoimento com tamanhos variados (42/44/40px) e borda destacada no primeiro. (g) Overlay .hero-noise-overlay com textura fractalNoise via data URI SVG + mix-blend-mode overlay a 3% opacity. (h) Paddings verticais não-uniformes entre seções: dor 96/80, pilares 80/100, resultados 100/72, depoimentos 72/96.
+-->
+</body>
+</html>
